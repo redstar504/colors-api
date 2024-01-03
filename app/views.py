@@ -11,7 +11,7 @@ def color_list(request):
     """List all colors, or create a new color."""
 
     if request.method == 'GET':
-        colors = Color.objects.all()
+        colors = Color.objects.all().order_by('id')
         serializer = ColorSerializer(colors, many=True)
         return JsonResponse(serializer.data, safe=False)
     elif request.method == 'POST':
