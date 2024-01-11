@@ -1,5 +1,5 @@
 """
-WSGI config for colors project.
+WSGI config for devjobs project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'colors.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'devjobs.settings')
 
 application = get_wsgi_application()

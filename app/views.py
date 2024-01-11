@@ -2,44 +2,44 @@ from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 
-from app.models import Color
-from app.serializers import ColorSerializer
+from app.models import Job
+from app.serializers import JobSerializer
 
 
 @csrf_exempt
-def color_list(request):
+def job_list(request):
     """List all colors, or create a new color."""
 
     if request.method == 'GET':
-        colors = Color.objects.all().order_by('id')
-        serializer = ColorSerializer(colors, many=True)
+        colors = Job.objects.all().order_by('id')
+        serializer = JobSerializer(colors, many=True)
         return JsonResponse(serializer.data, safe=False)
     elif request.method == 'POST':
         data = JSONParser().parse(request)
-        serializer = ColorSerializer(data=data)
+        serializer = JobSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
 
 @csrf_exempt
-def color_detail(request, pk):
+def job_detail(request, pk):
     """
     Retrieve, update or delete a color.
     """
 
     try:
-        color = Color.objects.get(pk=pk)
-    except Color.DoesNotExist:
+        color = Job.objects.get(pk=pk)
+    except Job.DoesNotExist:
         return HttpResponse(status=404)
 
     if request.method == 'GET':
-        serializer = ColorSerializer(color)
+        serializer = JobSerializer(color)
         return JsonResponse(serializer.data)
 
     elif request.method == 'PUT':
         data = JSONParser().parse(request)
-        serializer = ColorSerializer(color, data=data)
+        serializer = JobSerializer(color, data=data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data)

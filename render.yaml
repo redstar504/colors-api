@@ -1,18 +1,18 @@
 databases:
-  - name: colors
-    databaseName: colors
-    user: colors
+  - name: devjobs
+    databaseName: devjobs
+    user: devjobs
 
 services:
   - type: web
-    name: colors-api
+    name: devjobs-api
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn colors.wsgi:application"
+    startCommand: "gunicorn devjobs.wsgi:application"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: colors
+          name: devjobs
           property: connectionString
       - key: SECRET_KEY
         generateValue: true

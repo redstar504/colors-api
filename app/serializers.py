@@ -1,9 +1,9 @@
 from rest_framework import serializers
 
-from app.models import Color
+from app.models import Job
 
 
-class ColorSerializer(serializers.ModelSerializer):
+class JobSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Color
-        fields = ['id', 'title', 'color', 'rating']
+        model = Job
+        fields = ['id', 'title', 'description', 'location', 'contract_type']

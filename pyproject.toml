@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "colors"
+name = "devjobs"
 version = "0.1.0"
 description = ""
 authors = ["Brayden Williams <1311325+redstar504@users.noreply.github.com>"]
@@ -8,12 +8,14 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 django = "^5.0.1"
+djangorestframework = "^3.14.0"
 dj-database-url = "^2.1.0"
 psycopg2-binary = "^2.9.9"
-gunicorn = "^21.2.0"
-djangorestframework = "^3.14.0"
 django-cors-headers = "^4.3.1"
 
+
+[tool.poetry.group.dev.dependencies]
+httpie = "^3.2.2"
 
 [build-system]
 requires = ["poetry-core"]
